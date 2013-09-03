@@ -1,5 +1,6 @@
 package com.indra.formacion.jdbc.service;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -23,8 +24,15 @@ class LibroServiceImpl implements ILibroService {
 	@Override
 	public void agregarLibro(Libro libro) throws CustomException {
 		// TODO: Agregar más código de lógica de datos...
+		Connection con = null;
 		try {
+			libroDao.setAutoCommit(false);
+			con = libroDao.abrirConexion();
 			Integer libroId = libroDao.agregar(libro);
+			
+			// TODO: Pedir la conexión y pasarla al ofreceDao...
+			ofreceDao.setAutoCommit(false);
+			ofreceDao.setConexion(con);
 			
 			if (libro.getOfreces() != null && libro.getOfreces().size() > 0) {
 				for (Ofrece o : libro.getOfreces()) {
@@ -35,10 +43,17 @@ class LibroServiceImpl implements ILibroService {
 					ofreceDao.agregar(o);
 				}
 			}
+			
+			con.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			if (con != null)
+				con.rollback();
 			
 			throw new CustomException(e.getMessage());
+		} finally {
+			if (con != null)
+				con.close();
 		}
 	}
 
