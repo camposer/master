@@ -11,10 +11,10 @@ import com.indra.formacion.jdbc.model.Libro;
 public class LibroDao extends BaseDao implements ILibroDao {
 
 	@Override
-	public Integer agregar(Libro libro) throws SQLException {
-		abrirConexion();
+	public void agregar(Libro libro) throws SQLException {
+		if (autoCommit)
+			abrirConexion();
 		
-		Integer id = null;
 		String sql = "INSERT INTO libro(titulo, autor, precio) VALUES(?, ?, ?)";
 		
 		PreparedStatement pstmt = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -24,17 +24,18 @@ public class LibroDao extends BaseDao implements ILibroDao {
 		
 		pstmt.executeUpdate();
 		ResultSet rs = pstmt.getGeneratedKeys();
-		if (rs.next())
-			id = rs.getInt(1);
+		if (rs.next()) 
+			libro.setId(rs.getInt(1));
 
-		cerrarConexion();
-		
-		return id;
+	
+		if (autoCommit)
+			cerrarConexion();
 	}
 
 	@Override
 	public void modificar(Libro libro) throws SQLException {
-		abrirConexion();
+		if (autoCommit)
+			abrirConexion();
 		
 		String sql = "UPDATE libro SET titulo = ?, autor = ?, precio= ? WHERE id = ?";
 		
@@ -46,12 +47,14 @@ public class LibroDao extends BaseDao implements ILibroDao {
 		
 		pstmt.executeUpdate();
 		
-		cerrarConexion();
+		if (autoCommit)
+			cerrarConexion();
 	}
 
 	@Override
 	public void eliminar(Integer clave) throws SQLException {
-		abrirConexion();
+		if (autoCommit)
+			abrirConexion();
 		
 		String sql = "DELETE FROM libro WHERE id = ?";
 		
@@ -60,12 +63,14 @@ public class LibroDao extends BaseDao implements ILibroDao {
 		
 		pstmt.executeUpdate();
 		
-		cerrarConexion();
+		if (autoCommit)
+			cerrarConexion();
 	}
 
 	@Override
 	public Libro obtener(Integer clave) throws SQLException {
-		abrirConexion();
+		if (autoCommit)
+			abrirConexion();
 		
 		Libro libro = null;
 		
@@ -80,14 +85,17 @@ public class LibroDao extends BaseDao implements ILibroDao {
 			libro.setId(rs.getInt("id"));
 		}
 
-		cerrarConexion();
+		if (autoCommit)
+			cerrarConexion();
 
 		return libro;		
 	}
 
 	@Override
 	public List<Libro> obtenerTodos() throws SQLException {
-		abrirConexion();
+		if (autoCommit)
+			abrirConexion();
+		
 		List<Libro> libros = new LinkedList<Libro>();
 		
 		String sql = "SELECT * FROM libro";
@@ -101,8 +109,10 @@ public class LibroDao extends BaseDao implements ILibroDao {
 			
 			libros.add(l);
 		}
-			
-		cerrarConexion();
+		
+		if (autoCommit)
+			cerrarConexion();
+		
 		return libros;
 	}
 

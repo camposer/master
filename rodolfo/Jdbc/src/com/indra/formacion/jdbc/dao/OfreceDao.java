@@ -12,11 +12,11 @@ import com.indra.formacion.jdbc.model.Ofrece;
 public class OfreceDao extends BaseDao implements IOfreceDao {
 
 	@Override
-	public Integer agregar(Ofrece ofrece) throws SQLException {
-		abrirConexion();
+	public void agregar(Ofrece ofrece) throws SQLException {
+		if (autoCommit)
+			abrirConexion();
 		
-		Integer id = null;
-		String sql = "FALLA!!! INSERT INTO ofrece(libro_id, libreria_id, precio) VALUES(?, ?, ?)";
+		String sql = "INSERT INTO ofrece(libro_id, libreria_id, precio) VALUES(?, ?, ?)";
 
 		PreparedStatement pstmt = con.prepareStatement(sql,
 				PreparedStatement.RETURN_GENERATED_KEYS);
@@ -27,11 +27,10 @@ public class OfreceDao extends BaseDao implements IOfreceDao {
 		pstmt.executeUpdate();
 		ResultSet rs = pstmt.getGeneratedKeys();
 		if (rs.next())
-			id = rs.getInt(1);
+			ofrece.setId(rs.getInt(1));
 
-		cerrarConexion();
-		
-		return id;
+		if (autoCommit)
+			cerrarConexion();
 	}
 
 	@Override
@@ -48,7 +47,8 @@ public class OfreceDao extends BaseDao implements IOfreceDao {
 
 	@Override
 	public Ofrece obtener(Integer clave) throws SQLException {
-		abrirConexion();
+		if (autoCommit)
+			abrirConexion();
 		
 		Ofrece ofrece = null;
 
@@ -77,7 +77,8 @@ public class OfreceDao extends BaseDao implements IOfreceDao {
 			ofrece.setId(rs.getInt("ofrece_id"));
 		}
 
-		cerrarConexion();
+		if (autoCommit)
+			cerrarConexion();
 		
 		return ofrece;
 	}
