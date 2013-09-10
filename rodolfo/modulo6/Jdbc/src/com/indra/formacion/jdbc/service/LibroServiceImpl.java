@@ -3,8 +3,6 @@ package com.indra.formacion.jdbc.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.springframework.context.ApplicationContext;
-
 import com.indra.formacion.jdbc.dao.BaseDao;
 import com.indra.formacion.jdbc.dao.ILibroDao;
 import com.indra.formacion.jdbc.dao.IOfreceDao;
@@ -16,7 +14,6 @@ import com.indra.formacion.jdbc.model.Ofrece;
 public class LibroServiceImpl implements ILibroService {
 	private ILibroDao libroDao;
 	private IOfreceDao ofreceDao;
-	private ApplicationContext context;
 	
 	@Override
 	public void agregarLibro(Libro libro) throws CustomException {

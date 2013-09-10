@@ -21,7 +21,7 @@ import com.indra.formacion.jdbc.service.LibroServiceFactory;
  * Servlet implementation class AgregarLibroServlet
  */
 @WebServlet("/libro/Agregar")
-public class AgregarLibroServlet extends HttpServlet {
+public class AgregarLibroServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -52,7 +52,7 @@ public class AgregarLibroServlet extends HttpServlet {
 		List<Ofrece> ofreces = Arrays.asList(new Ofrece[] { o });
 		
 		libro = new Libro(titulo, autor, Float.parseFloat(sprecio), ofreces);
-		ILibroService libroService = LibroServiceFactory.createLibroService();
+		ILibroService libroService = getApplicationContext().getBean("libroService", ILibroService.class);
 		try {
 			libroService.agregarLibro(libro);
 		} catch (CustomException e) {

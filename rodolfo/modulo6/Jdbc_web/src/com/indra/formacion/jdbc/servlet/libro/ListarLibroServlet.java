@@ -16,7 +16,7 @@ import com.indra.formacion.jdbc.service.LibroServiceFactory;
  * Servlet implementation class ListarLibroServlet
  */
 @WebServlet("/libro/Listar")
-public class ListarLibroServlet extends HttpServlet {
+public class ListarLibroServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -31,7 +31,7 @@ public class ListarLibroServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ILibroService libroService = LibroServiceFactory.createLibroService();
+		ILibroService libroService = getApplicationContext().getBean("libroService", ILibroService.class);
 		
 		try {
 			request.setAttribute("libros", libroService.obtenerLibros());
