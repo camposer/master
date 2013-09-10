@@ -12,6 +12,7 @@ import com.indra.formacion.jdbc.model.Libreria;
 import com.indra.formacion.jdbc.model.Libro;
 import com.indra.formacion.jdbc.model.Ofrece;
 import com.indra.formacion.jdbc.service.ILibroService;
+import com.indra.formacion.jdbc.service.LibroServiceFactory;
 
 public class Principal {
 	private ApplicationContext context;
@@ -44,10 +45,10 @@ public class Principal {
 			
 			libro = new Libro(titulo, autor, Float.parseFloat(sprecio), ofreces);
 
-			ILibroService libroService = context.getBean("libroService", ILibroService.class);
-			libroService.agregarLibro(libro);
+			LibroServiceFactory libroServiceFactory = context.getBean("libroServiceFactory", LibroServiceFactory.class);
+			libroServiceFactory.createLibroService().agregarLibro(libro);
 			
-			System.out.println(libroService.obtenerLibros());
+			System.out.println(libroServiceFactory.createLibroService().obtenerLibros());
 		}
 	}
 	

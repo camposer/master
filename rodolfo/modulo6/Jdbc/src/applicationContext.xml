@@ -7,10 +7,12 @@
 	<bean id="ofreceDao" class="com.indra.formacion.jdbc.dao.OfreceDao" scope="prototype"/>
 	<!-- bean id="libreriaDao" class="com.indra.formacion.jdbc.dao.LibreriaDao"/-->
 
-	<bean id="libroService" class="com.indra.formacion.jdbc.service.LibroServiceImpl">
-		<!--  property name="libroDao" ref="libroDao"/>
-		<property name="ofreceDao" ref="ofreceDao"/ -->
+	<bean id="libroService" class="com.indra.formacion.jdbc.service.LibroServiceImpl" scope="prototype">
+		<property name="libroDao" ref="libroDao"/>
+		<property name="ofreceDao" ref="ofreceDao"/>
 	</bean>
+
+	<bean id="libroServiceFactory" class="com.indra.formacion.jdbc.service.LibroServiceFactory"/>
 
 	<!-- bean id="libreriaService" class="com.indra.formacion.jdbc.service.LibreriaServiceImpl">
 		<property name="libreriaDao" ref="libreriaDao"/>

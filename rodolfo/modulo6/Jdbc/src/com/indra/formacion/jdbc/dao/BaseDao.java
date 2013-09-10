@@ -25,6 +25,7 @@ public abstract class BaseDao {
 	}
 	
 	protected void abrirConexion() throws SQLException {
+		// Cómo inyecto esto?
 		con = DriverManager.getConnection(URL_BD, USUARIO_BD, CLAVE_BD);
 	}
 
