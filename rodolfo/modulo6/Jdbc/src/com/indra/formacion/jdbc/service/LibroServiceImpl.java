@@ -3,6 +3,8 @@ package com.indra.formacion.jdbc.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.indra.formacion.jdbc.dao.BaseDao;
 import com.indra.formacion.jdbc.dao.ILibroDao;
 import com.indra.formacion.jdbc.dao.IOfreceDao;
@@ -12,7 +14,9 @@ import com.indra.formacion.jdbc.model.Libro;
 import com.indra.formacion.jdbc.model.Ofrece;
 
 public class LibroServiceImpl implements ILibroService {
+	@Autowired
 	private ILibroDao libroDao;
+	@Autowired
 	private IOfreceDao ofreceDao;
 	
 	@Override

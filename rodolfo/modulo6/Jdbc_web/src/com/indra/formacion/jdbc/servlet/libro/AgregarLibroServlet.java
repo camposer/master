@@ -15,7 +15,6 @@ import com.indra.formacion.jdbc.model.Libreria;
 import com.indra.formacion.jdbc.model.Libro;
 import com.indra.formacion.jdbc.model.Ofrece;
 import com.indra.formacion.jdbc.service.ILibroService;
-import com.indra.formacion.jdbc.service.LibroServiceFactory;
 
 /**
  * Servlet implementation class AgregarLibroServlet

@@ -11,14 +11,13 @@ import com.indra.formacion.jdbc.exception.CustomException;
 import com.indra.formacion.jdbc.model.Libreria;
 import com.indra.formacion.jdbc.model.Libro;
 import com.indra.formacion.jdbc.model.Ofrece;
-import com.indra.formacion.jdbc.service.ILibroService;
 import com.indra.formacion.jdbc.service.LibroServiceFactory;
 
 public class Principal {
 	private ApplicationContext context;
 	
 	public Principal() {
-		context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		context = new ClassPathXmlApplicationContext("applicationContext-annotations.xml");
 	}
 	
 	

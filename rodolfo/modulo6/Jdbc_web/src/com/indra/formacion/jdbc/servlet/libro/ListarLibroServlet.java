@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.indra.formacion.jdbc.exception.CustomException;
 import com.indra.formacion.jdbc.service.ILibroService;
-import com.indra.formacion.jdbc.service.LibroServiceFactory;
 
 /**
  * Servlet implementation class ListarLibroServlet
