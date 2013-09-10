@@ -4,15 +4,23 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.indra.formacion.jdbc.exception.CustomException;
 import com.indra.formacion.jdbc.model.Libreria;
 import com.indra.formacion.jdbc.model.Libro;
 import com.indra.formacion.jdbc.model.Ofrece;
 import com.indra.formacion.jdbc.service.ILibroService;
-import com.indra.formacion.jdbc.service.LibroServiceFactory;
 
 public class Principal {
-
+	private ApplicationContext context;
+	
+	public Principal() {
+		context = new ClassPathXmlApplicationContext("applicationContext.xml");
+	}
+	
+	
 	public void menu() throws CustomException {
 		Scanner scanner = new Scanner(System.in);
 		while (true) {
@@ -35,7 +43,8 @@ public class Principal {
 			ofreces.add(o);
 			
 			libro = new Libro(titulo, autor, Float.parseFloat(sprecio), ofreces);
-			ILibroService libroService = LibroServiceFactory.createLibroService();
+
+			ILibroService libroService = context.getBean("libroService", ILibroService.class);
 			libroService.agregarLibro(libro);
 			
 			System.out.println(libroService.obtenerLibros());

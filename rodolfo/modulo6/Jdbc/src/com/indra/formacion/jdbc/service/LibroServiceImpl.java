@@ -3,6 +3,10 @@ package com.indra.formacion.jdbc.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
 import com.indra.formacion.jdbc.dao.BaseDao;
 import com.indra.formacion.jdbc.dao.ILibroDao;
 import com.indra.formacion.jdbc.dao.IOfreceDao;
@@ -13,14 +17,15 @@ import com.indra.formacion.jdbc.exception.CustomException;
 import com.indra.formacion.jdbc.model.Libro;
 import com.indra.formacion.jdbc.model.Ofrece;
 
-class LibroServiceImpl implements ILibroService {
+public class LibroServiceImpl implements ILibroService, ApplicationContextAware {
 	private ILibroDao libroDao;
 	private IOfreceDao ofreceDao;
+	private ApplicationContext context;
 	
 	@Override
 	public void agregarLibro(Libro libro) throws CustomException {
-		libroDao = new LibroDao();
-		ofreceDao = new OfreceDao();
+		libroDao = context.getBean("libroDao", ILibroDao.class);
+		ofreceDao = context.getBean("libreriaDao", IOfreceDao.class);;
 
 		TransactionProxy proxy = null;
 		try {
@@ -63,7 +68,7 @@ class LibroServiceImpl implements ILibroService {
 
 	@Override
 	public List<Libro> obtenerLibros() throws CustomException {
-		libroDao = new LibroDao();
+		libroDao = context.getBean("libroDao", ILibroDao.class);
 
 		// TODO: Agregar más código de lógica de datos...
 		// FIXME: Esto devuelve un error cuando X
@@ -76,4 +81,21 @@ class LibroServiceImpl implements ILibroService {
 		}
 	}
 
+	public void setLibroDao(ILibroDao libroDao) {
+		this.libroDao = libroDao;
+	}
+
+	public void setOfreceDao(IOfreceDao ofreceDao) {
+		this.ofreceDao = ofreceDao;
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext context)
+			throws BeansException {
+		
+		this.context = context;
+		
+	}
+
+	
 }
