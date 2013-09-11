@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<bean id="personaPrototype" class="com.indra.formacion.spring.Persona" scope="prototype">
+		<constructor-arg index="0"><value>Pedro</value></constructor-arg>
+		<constructor-arg index="1"><value>Pérez</value></constructor-arg>
+	</bean>
+	
+	<bean id="holaMundoSingleton" class="com.indra.formacion.spring.HelloWorld">
+		<property name="persona" ref="personaPrototype"/>
+	</bean>
+	<!-- bean id="holaMundoSingleton" class="com.indra.formacion.spring.HolaMundo" scope="singleton"/ -->
+
+	<bean id="holaMundoPrototype" class="com.indra.formacion.spring.HelloWorld" scope="prototype"/>
+
+
+</beans>
