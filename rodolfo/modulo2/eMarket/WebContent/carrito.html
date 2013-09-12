@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" type="text/css" href="common.css">
+		<title>Tienda de artículos electrónicos</title>
+		<style>
+			#tablaCarrito {
+				margin-left: auto;
+			}
+
+			#tablaCarrito tr:last-child td {
+				text-align: center;
+			}
+
+			#tablaCarrito .impar td {
+				background-color: navy;
+			}
+
+			#tablaCarrito .par td {
+				background-color: green;
+			}
+
+			#total td:first-child {
+				text-align: right;
+			}
+
+			#total td:last-child input {
+				text-align: center;
+				width: 4em;
+			}
+
+			#total td {
+				background-color: gray;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Tienda de artículos electrónicos</h1>
+		<form>
+			<table id="tablaCarrito" class="tabla">
+				<tr class="impar">
+					<th>Artículo</th>
+					<th>Precio</th>
+					<th>Cantidad</th>
+					<th>Precio</th>
+				</tr>
+				<tr class="par">
+					<td>Portátiles</td>
+					<td>599 €</td>
+					<td><input type="text" name="cantidadPortatiles" class="cantidad"/></td>
+					<td><input type="text" name="precioPortatiles" class="precio"/></td>
+				</tr>
+				<tr class="impar">
+					<td>DVD</td>
+					<td>230 €</td>
+					<td><input type="text" name="cantidadDvd" class="cantidad"/></td>
+					<td><input type="text" name="precioDvd" class="precio"/></td>
+				</tr>
+				<tr class="par">
+					<td>Cámaras</td>
+					<td>60 €</td>
+					<td><input type="text" name="cantidadCamaras" class="cantidad"/></td>
+					<td><input type="text" name="precioCamaras" class="precio"/></td>
+				</tr>
+				<tr id="total">
+					<td colspan="3">Total:</td>
+					<td><input type="text" name="total"/>
+				</tr>
+				<tr class="par">
+					<td colspan="4">
+						<input type="button" name="atras" value="Atrás" onclick="javascript:window.history.back();"/>
+						<input type="submit" name="comprar" value="Comprar"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

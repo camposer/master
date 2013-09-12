@@ -1,0 +1,50 @@
+h1 {
+	text-align: center;
+}
+
+.tabla {
+	border: 1px solid black;
+}
+
+.cantidad,.precio {
+	width: 4em;
+	text-align: center;
+}
+
+#tablaPrincipal {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#tablaPrincipal tr:last-child td {
+	text-align: center;
+}
+
+#tablaCarrito {
+	margin-left: auto;
+}
+
+#tablaCarrito tr:last-child td {
+	text-align: center;
+}
+
+#tablaCarrito .impar td {
+	background-color: navy;
+}
+
+#tablaCarrito .par td {
+	background-color: green;
+}
+
+#total td:first-child {
+	text-align: right;
+}
+
+#total td:last-child input {
+	text-align: center;
+	width: 4em;
+}
+
+#total td {
+	background-color: gray;
+}
