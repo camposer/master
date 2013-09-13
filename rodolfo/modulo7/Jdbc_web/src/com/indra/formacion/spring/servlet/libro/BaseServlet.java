@@ -1,4 +1,4 @@
-package com.indra.formacion.jdbc.servlet.libro;
+package com.indra.formacion.spring.servlet.libro;
 
 import javax.servlet.http.HttpServlet;
 

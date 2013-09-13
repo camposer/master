@@ -1,21 +1,15 @@
-package com.indra.formacion.jdbc.service;
+package com.indra.formacion.jdbc.dao;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-public class LibroServiceFactory implements ApplicationContextAware {
+public class TransactionProxyFactory implements ApplicationContextAware {
 	private ApplicationContext context;
 	
-	public static ILibroService createLibroService() {
-		return new LibroServiceImpl();
+	public TransactionProxy createTransactionProxy() {
+		return context.getBean("transactionProxy", TransactionProxy.class);
 	}
-
-	/*
-	public ILibroService createLibroService() {
-		return context.getBean("libroService", ILibroService.class);
-	}
-	*/
 
 	@Override
 	public void setApplicationContext(ApplicationContext context)
@@ -23,4 +17,6 @@ public class LibroServiceFactory implements ApplicationContextAware {
 		this.context = context;
 		
 	}
+	
+	
 }

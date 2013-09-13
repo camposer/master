@@ -1,4 +1,4 @@
-package com.indra.formacion.jdbc.servlet.libro;
+package com.indra.formacion.spring.servlet.libro;
 
 import java.io.IOException;
 import java.util.Arrays;
