@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.indra.formacion.jdbc.dao.ILibreriaDao;
-import com.indra.formacion.jdbc.dao.LibreriaDao;
 import com.indra.formacion.jdbc.exception.CustomException;
 import com.indra.formacion.jdbc.model.Libreria;
 

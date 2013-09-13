@@ -10,7 +10,7 @@
 <body>
 	<center>
 	<h1>Libros</h1>
-	<form action="Agregar" method="post">
+	<form action="agregar.do" method="post">
 		<table>
 			<tr>
 				<td>Título</td>
@@ -44,7 +44,7 @@
 	<br/>
 	<%
 		out.flush();
-		application.getRequestDispatcher("/libro/Listar").include(request, response);
+		application.getRequestDispatcher("/libro/listar.do").include(request, response);
 	%>
 	</center>
 </body>

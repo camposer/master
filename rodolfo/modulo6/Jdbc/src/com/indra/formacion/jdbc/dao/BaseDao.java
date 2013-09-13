@@ -1,32 +1,22 @@
 package com.indra.formacion.jdbc.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.indra.formacion.jdbc.ConnectionFactory;
+
 public abstract class BaseDao {
-	public static final String URL_BD = "jdbc:mysql://localhost/test";
-	public static final String USUARIO_BD = "root";
-	public static final String CLAVE_BD = "";
-	protected Connection con;
+	// TODO: Resolver cómo sería sin autowired
+	protected ConnectionFactory connectionFactory; 
 	protected boolean autoCommit;
+	protected Connection con;
 	
 	public BaseDao() {
 		this.autoCommit = true;
 	}
 	
-	static {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			System.err.println("Error cargando el driver");
-			e.printStackTrace();
-		}
-	}
-	
 	protected void abrirConexion() throws SQLException {
-		// TODO: Cómo inyecto esto?
-		con = DriverManager.getConnection(URL_BD, USUARIO_BD, CLAVE_BD);
+		con = connectionFactory.createConnection();
 	}
 
 	protected void cerrarConexion() throws SQLException {
@@ -49,4 +39,13 @@ public abstract class BaseDao {
 		this.autoCommit = autoCommit;
 	}
 
+	public ConnectionFactory getConnectionFactory() {
+		return connectionFactory;
+	}
+
+	public void setConnectionFactory(ConnectionFactory connectionFactory) {
+		this.connectionFactory = connectionFactory;
+	}
+
+	
 }
