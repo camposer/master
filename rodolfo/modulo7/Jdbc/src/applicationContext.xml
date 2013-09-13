@@ -1,0 +1,21 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<bean id="libroDao" class="com.indra.formacion.jdbc.dao.LibroDao" scope="prototype"/>
+	<bean id="ofreceDao" class="com.indra.formacion.jdbc.dao.OfreceDao" scope="prototype"/>
+	<!-- bean id="libreriaDao" class="com.indra.formacion.jdbc.dao.LibreriaDao"/-->
+
+	<bean id="libroService" class="com.indra.formacion.jdbc.service.LibroServiceImpl" scope="prototype">
+		<property name="libroDao" ref="libroDao"/>
+		<property name="ofreceDao" ref="ofreceDao"/>
+	</bean>
+
+	<bean id="libroServiceFactory" class="com.indra.formacion.jdbc.service.LibroServiceFactory"/>
+
+	<!-- bean id="libreriaService" class="com.indra.formacion.jdbc.service.LibreriaServiceImpl">
+		<property name="libreriaDao" ref="libreriaDao"/>
+	</bean-->
+
+</beans>
