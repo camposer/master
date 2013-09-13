@@ -12,14 +12,14 @@ public class TransactionProxy {
 	private ConnectionFactory connectionFactory;
 	private Connection con;
 	
-	public TransactionProxy() {
+	public void init() {
 		try {
 			con = connectionFactory.createConnection();
 			con.setAutoCommit(false);
 		} catch (SQLException e) {
 			System.err.println("Error abriendo la conexión");
 			e.printStackTrace();
-		}
+		}		
 	}
 	
 	public void join(BaseDao dao) {

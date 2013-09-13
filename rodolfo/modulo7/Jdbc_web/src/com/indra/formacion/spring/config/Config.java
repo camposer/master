@@ -65,7 +65,7 @@ public class Config {
 		return new TransactionProxyFactory();
 	}
 
-	@Bean
+	@Bean(initMethod="init") // OJO: El bean es inyectado después de creada la instancia!!
 	@Scope("prototype")
 	public TransactionProxy transactionProxy() {
 		return new TransactionProxy();
