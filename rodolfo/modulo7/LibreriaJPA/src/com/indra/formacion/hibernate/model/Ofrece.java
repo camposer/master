@@ -35,6 +35,12 @@ public class Ofrece implements Serializable {
 	public Ofrece() {
 	}
 
+	public Ofrece(Libro libro, Libreria libreria, Float precio) {
+		this.libro = libro;
+		this.libreria = libreria;
+		this.precio = precio;
+	}
+
 	public int getId() {
 		return this.id;
 	}

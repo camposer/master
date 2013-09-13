@@ -1,4 +1,4 @@
-package com.indra.formacion.spring.controller;
+package com.indra.formacion.hibernate.controller;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -12,12 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.indra.formacion.jdbc.exception.CustomException;
-import com.indra.formacion.jdbc.model.Libreria;
-import com.indra.formacion.jdbc.model.Libro;
-import com.indra.formacion.jdbc.model.Ofrece;
-import com.indra.formacion.jdbc.service.ILibreriaService;
-import com.indra.formacion.jdbc.service.ILibroService;
+import com.indra.formacion.hibernate.exception.CustomException;
+import com.indra.formacion.hibernate.model.Libreria;
+import com.indra.formacion.hibernate.model.Libro;
+import com.indra.formacion.hibernate.model.Ofrece;
+import com.indra.formacion.hibernate.service.ILibreriaService;
+import com.indra.formacion.hibernate.service.ILibroService;
 
 @Controller
 @RequestMapping("/libro/*")

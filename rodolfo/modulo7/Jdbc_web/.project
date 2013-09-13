@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Jdbc_web</name>
+	<name>LibreriaWeb</name>
 	<comment></comment>
 	<projects>
-		<project>Jdbc</project>
+		<project>LibreriaJPA</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

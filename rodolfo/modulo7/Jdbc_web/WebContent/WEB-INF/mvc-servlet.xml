@@ -9,6 +9,6 @@
 	<context:annotation-config/> <!-- Definiendo configuración por anotaciones -->
 	<context:spring-configured/> <!-- Definiendo clases normales para que usen spring, soporte: @Autowired -->
 	<context:component-scan 
-	base-package="com.indra.formacion.spring.config,com.indra.formacion.spring.controller"/> <!-- Definiendo clase de configuraciones -->
+	base-package="com.indra.formacion.hibernate.config,com.indra.formacion.hibernate.controller"/> <!-- Definiendo clase de configuraciones -->
 
 </beans>

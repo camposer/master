@@ -39,6 +39,17 @@ public class Libro implements Serializable {
 
 	public Libro() {
 	}
+	
+	public Libro(String titulo, String autor, Float precio) {
+		this(titulo, autor, precio, null);
+	}
+
+	public Libro(String titulo, String autor, Float precio, List<Ofrece> ofreces) {
+		this.titulo = titulo;
+		this.autor = autor;
+		this.precio = precio;
+		this.ofreces = ofreces;
+	}
 
 	public int getId() {
 		return this.id;
