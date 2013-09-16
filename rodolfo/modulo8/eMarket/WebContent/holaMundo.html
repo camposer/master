@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Hola mundo!</title>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script>
+		var callbackDone = function(msg, textStatus, jqXHR) {
+			$("#contenido").html(msg);
+		}
+	
+		var callbackFailed = function(jqXHR, textStatus, errorThrown) {
+			window.alert("Ha ocurrido el siguiente error: " + textStatus);	
+		}
+		
+		$(document).ready(function() {
+			inicio(); 
+			window.alert("Hola mundo");
+		});
+		
+		var inicio = function() {
+			var url = "/eMarket/contenido.jsp";
+			var configs = {
+				type: "GET",
+//				async: false,
+//				success: function(msg) { window.alert(msg); }, 
+				dataType: "text", // -> Lo que recibe
+				contentType: "text/html" // -> Lo que envía
+			};
+			
+			var ajax = $.ajax(url, configs); // Llamada no bloqueante
+
+			ajax.done(callbackDone); // Si la respuesta es satisfactoria
+			ajax.fail(callbackFailed); // Si la respuesta es errónea
+		}
+	</script>
+</head>
+<body>
+	<div id ="contenido"/>
+</body>
+</html>
