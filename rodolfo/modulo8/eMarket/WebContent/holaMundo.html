@@ -13,9 +13,35 @@
 			window.alert("Ha ocurrido el siguiente error: " + textStatus);	
 		}
 		
+		var clic = function(url, dataType, callback) {
+			var nombre = $("#nombre").val();
+			var apellido = $("#apellido").val();
+			
+			var configs = {
+				type: "POST",
+				dataType: dataType,
+				data: { nombre: nombre, apellido: apellido }
+			};
+			
+			$.ajax(url, configs).done(callback);
+		}
+		
+		var clic1 = function() {
+			clic("/eMarket/procesar.jsp", "text", function(data) {
+				$("#contenido").html(data);
+			});
+		}
+		
+		var clic2 = function() {
+			clic("/eMarket/procesarJson.jsp", "json", function(data) {
+				$("#contenido").html(data.nombre);
+			});
+		}
+		
 		$(document).ready(function() {
+			$("#clic").click(clic1);			
+			$("#json").click(clic2);			
 			inicio(); 
-			window.alert("Hola mundo");
 		});
 		
 		var inicio = function() {
@@ -36,6 +62,20 @@
 	</script>
 </head>
 <body>
-	<div id ="contenido"/>
+	<div id ="contenido"></div>
+	<table>
+		<tr>
+			<td>Nombre: </td>
+			<td><input type="text" id="nombre"/></td>
+		</tr>	
+		<tr>
+			<td>Apellido: </td>
+			<td><input type="text" id="apellido"/></td>
+		</tr>		
+		<tr>
+			<td><input type="button" id="clic" value="clic"/></td>
+			<td><input type="button" id="json" value="json"/></td>
+		</tr>
+	</table>
 </body>
 </html>
