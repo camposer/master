@@ -6,9 +6,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public abstract class BaseDao<T, K> implements IDao<T, K> {
 	// TODO: Resolver cómo sería sin autowired
 	private EntityManager entityManager;
+	@Autowired
 	protected EntityManagerFactory entityManagerFactory; 
 	protected boolean autoCommit;
 	private Class<T> clase;
@@ -71,7 +74,8 @@ public abstract class BaseDao<T, K> implements IDao<T, K> {
 		if (entityManager == null)
 			entityManager = entityManagerFactory.createEntityManager();
 
-		return (List<T>) entityManager.createQuery("from " + clase.getName()).getResultList();
+		List<T> resultado = (List<T>) entityManager.createQuery("from " + clase.getName()).getResultList();
+		return resultado;
 	}
 
 	public EntityManagerFactory getEntityManagerFactory() {

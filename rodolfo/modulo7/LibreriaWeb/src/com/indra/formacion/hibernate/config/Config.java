@@ -38,23 +38,17 @@ public class Config {
 	
 	@Bean(initMethod="init")
 	public ILibroDao libroDao() {
-		LibroDao libroDao = new LibroDao(false);
-		libroDao.setEntityManagerFactory(entityManagerFactory());
-		return libroDao;
+		return new LibroDao(false);
 	}
 
 	@Bean(initMethod="init")
 	public IOfreceDao ofreceDao() {
-		OfreceDao ofreceDao = new OfreceDao(false);
-		ofreceDao.setEntityManagerFactory(entityManagerFactory());
-		return ofreceDao;
+		return new OfreceDao(false);
 	}
 
 	@Bean(initMethod="init")
 	public ILibreriaDao libreriaDao() {
-		LibreriaDao libreriaDao = new LibreriaDao();
-		libreriaDao.setEntityManagerFactory(entityManagerFactory());
-		return libreriaDao;
+		return new LibreriaDao();
 	}
 	
 	@Bean
