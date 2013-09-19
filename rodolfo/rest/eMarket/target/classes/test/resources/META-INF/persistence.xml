@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="LibreriaJPA">
+		<class>com.emarket.model.Compra</class>
+		<class>com.emarket.model.Lector</class>
+		<class>com.emarket.model.Libreria</class>
+		<class>com.emarket.model.Libro</class>
+		<class>com.emarket.model.Ofrece</class>
+		<properties>
+			<property name="hibernate.ejb.cfgfile" value="com/emarket/config/hibernate.cfg.xml"/>
+		</properties>
+
+	</persistence-unit>
+</persistence>

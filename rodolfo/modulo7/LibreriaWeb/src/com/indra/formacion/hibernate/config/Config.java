@@ -1,11 +1,15 @@
 package com.indra.formacion.hibernate.config;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.indra.formacion.hibernate.dao.ILibreriaDao;
 import com.indra.formacion.hibernate.dao.ILibroDao;
@@ -21,6 +25,7 @@ import com.indra.formacion.hibernate.service.LibreriaServiceImpl;
 import com.indra.formacion.hibernate.service.LibroServiceImpl;
 
 @Configuration
+@EnableTransactionManagement
 public class Config {
 	/**
 	 * Ref: libroDao y LibroService
@@ -57,6 +62,11 @@ public class Config {
 	}
 
 	@Bean
+	public EntityManager entityManager() {
+		return entityManagerFactory().createEntityManager();
+	}
+	
+	@Bean
 	public TransactionProxyFactory transactionProxyFactory() {
 		return new TransactionProxyFactory();
 	}
@@ -65,5 +75,13 @@ public class Config {
 	@Scope("prototype")
 	public TransactionProxy transactionProxy() {
 		return new TransactionProxy();
+	}
+	
+	@Bean
+	public PlatformTransactionManager transactionManager() {
+		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		//transactionManager.setEntityManagerFactory(entityManagerFactory());
+		
+		return transactionManager;
 	}
 }

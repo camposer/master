@@ -1,0 +1,46 @@
+h1 {
+	text-align: center;
+}
+
+.tablaCentrada {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cantidad {
+	width: 4ex;
+	text-align: center; /* centra el texto dentro de la caja */
+}
+
+
+.tablaDerecha {
+	margin-left: auto;	
+}
+
+/*
+.centrada {
+	text-align: center; // Centraba la caja de texto dentro de la celda
+}
+*/
+
+.tablaDerecha tr td:nth-child(3) {
+	text-align: center;
+}
+
+.tablaDerecha tr td:nth-child(4) {
+	text-align: center;
+}
+
+.tablaDerecha tr.total td:nth-child(2) {
+	text-align: center;
+}
+
+.tablaDerecha tr.total td {
+	background-color: gray;
+}
+
+
+
+
+
+

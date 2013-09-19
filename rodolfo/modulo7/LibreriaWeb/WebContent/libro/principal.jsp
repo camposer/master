@@ -14,15 +14,15 @@
 		<table>
 			<tr>
 				<td>Título</td>
-				<td><input type="text" name="titulo"/></td>
+				<td><input type="text" name="titulo" value="titulo"/></td>
 			</tr>
 			<tr>
 				<td>Autor</td>
-				<td><input type="text" name="autor"/></td>
+				<td><input type="text" name="autor" value="autor"/></td>
 			</tr>
 			<tr>
 				<td>Precio</td>
-				<td><input type="text" name="precio"/></td>
+				<td><input type="text" name="precio" value="2"/></td>
 			</tr>
 			<tr>
 				<td>Librería</td>

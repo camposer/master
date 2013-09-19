@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Insert title here</title>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			agregar();
+			listar();
+		});
+	
+		function agregar() {
+			var url = "/eMarket/rest/libros/.em";
+			var libro = {
+				"autor": "Autor #122",
+				"precio": 55.0,
+				"titulo": "Un amigo de Teo" 
+			};
+			
+			var a = $.ajax(url, {
+				type: "POST",
+				contentType: "application/json",
+				datatType: "text",
+				data: JSON.stringify(libro)
+			});			
+			
+			a.done(function(mensaje) {
+				window.alert(mensaje);
+			});
+			
+		}
+		
+		function listar() {
+			var url = "/eMarket/rest/libros/.em";
+			
+			var a = $.ajax(url, {
+				type: "GET",
+				datatType: "json",
+			});			
+			
+			a.done(function(libros) {
+				for (var i in libros) {
+					document.write(libros[i].titulo);
+					document.write("   ");
+				}
+			});			
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+----------------------------
+Producto 
+----------------------------
+
+Servlets en: com.emarket.servlet.tienda.producto
+JSPs en: /producto
+
+* http://localhost:8080/eMarket/GestionarProducto
+  - Página principal para la gestión de productos
+  - Muestra los productos disponibles, gestionados por la clase ProductoUtil (contexto estático)
+  - Permite agregar productos
+  - Implementa modelo MVC
+
+* http://localhost:8080/eMarket/AgregarProducto
+  - Atiende peticiones desde GestionarProducto
+  - Agrega productos (ProductoUtil.agregarProducto) y luego redirecciona el flujo a GestionarProducto
+
+* http://localhost:8080/eMarket/MostrarProducto
+  - Muestra el detalle de un producto desde GestionarProducto
+  - Obtiene el detalle de un producto (ProductoUtil.getProducto)
+
+* http://localhost:8080/eMarket/ModificarProducto
+  - Atiende peticiones desde MostrarProducto
+  - Modificar productos (ProductoUtil.modificarProducto) y luego redirecciona el flujo a GestionarProducto
+
+* http://localhost:8080/eMarket/MostrarProductos
+  - Muestra todos los productos
+  - Es incluida en GestionarProducto y MostraProducto

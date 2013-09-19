@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class BaseDao<T, K> implements IDao<T, K> {
 	// TODO: Resolver cómo sería sin autowired
+	@Autowired
 	private EntityManager entityManager;
 	@Autowired
 	protected EntityManagerFactory entityManagerFactory; 
@@ -28,8 +29,8 @@ public abstract class BaseDao<T, K> implements IDao<T, K> {
 	}
 	
 	protected void init() {
-		if (autoCommit)
-			this.entityManager = entityManagerFactory.createEntityManager();
+//		if (autoCommit)
+//			this.entityManager = entityManagerFactory.createEntityManager();
 	}
 
 	public boolean isAutoCommit() {
